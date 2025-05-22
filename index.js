@@ -14,6 +14,8 @@ let player = {
 
 let playerEl = document.getElementById('player-el')
 playerEl.textContent = player.name + " : $" + player.chips
+console.log(player.chips + 10);
+
 
 
 function getRandomCard() {
@@ -48,12 +50,14 @@ function renderGame() {
     } else if (sum === 21) {
         message = "You got Black Jack";
         hasBlackJack = true;
+        player.chips += 10;
     } else {
         message = "You're out of the game!";
-        isAlive = false
-
+        isAlive = false;
+        player.chips -= 20;
     }
 
+    playerEl.textContent = `${player.name} : $${player.chips}`
     messageEl.textContent = message;
 
 
